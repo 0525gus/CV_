@@ -42,3 +42,15 @@ check2
     }
   </code>
 </pre>
+
+
+참조링크  
+[link keyword][id]
+
+[id]: URL "optional Title here"
+
+// code
+
+Link : [구글이다][googlelink]
+
+[googlelink]: https:google.com " 구글이용"
