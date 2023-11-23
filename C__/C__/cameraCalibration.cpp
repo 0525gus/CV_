@@ -1,4 +1,4 @@
-#include <opencv2/calib3d/calib3d.hpp> //ī�޶� Ķ���극�̼� ���� �������
+#include <opencv2/calib3d/calib3d.hpp> //카메라 캘리브레이션 위한 헤더파일
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
@@ -11,13 +11,13 @@ Size CHECKERBOARD(6, 9);
 // Criteria for corner refinement
 TermCriteria criteria(TermCriteria::EPS + TermCriteria::MAX_ITER, 30, 0.001);
 
-// Vector to store 3D world coordinates of checkerboard corners
+// 3D세계의 (Object Points)체스보더 코너 좌표 저장할 벡터선언 
 vector<vector<Point3f>> objpoints;
 
-// Vector to store 2D image coordinates of checkerboard corners
+// 2D(image Points)체스보더 코너 좌표 저장할 벡터선언
 vector<vector<Point2f>> imgpoints;
 
-// 3D world coordinates definition
+// 3D세계의 좌표 정의 
 vector<Point3f> objp;
 
 int main() {
