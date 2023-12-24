@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일\right">
+      <UniqueIdentifier>{ba472bc8-b644-4d91-a6fd-7351518dee9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="리소스 파일\distort">
+      <UniqueIdentifier>{cbac0adb-ca33-4e2c-a27c-5ea709247a94}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\C__\C__\test.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\C__\C__\teststs.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="dot45.png">
+      <Filter>리소스 파일\right</Filter>
+    </Image>
+    <Image Include="dot_15.png">
+      <Filter>리소스 파일\right</Filter>
+    </Image>
+    <Image Include="dot_30.png">
+      <Filter>리소스 파일\right</Filter>
+    </Image>
+    <Image Include="dot_base.png">
+      <Filter>리소스 파일\right</Filter>
+    </Image>
+    <Image Include="test.jpg">
+      <Filter>리소스 파일\distort</Filter>
+    </Image>
+    <Image Include="test2.jpg">
+      <Filter>리소스 파일\distort</Filter>
+    </Image>
+    <Image Include="test90.jpg">
+      <Filter>리소스 파일\distort</Filter>
+    </Image>
+    <Image Include="ditor.jpg">
+      <Filter>리소스 파일\distort</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
