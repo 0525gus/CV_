@@ -133,10 +133,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\C__\C__\test.cpp" />
-    <ClCompile Include="..\C__\C__\teststs.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="ditor.jpg" />
     <Image Include="dot45.png" />
     <Image Include="dot_15.png" />
@@ -145,6 +141,9 @@
     <Image Include="test.jpg" />
     <Image Include="test2.jpg" />
     <Image Include="test90.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\C__\C__\testGIt.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

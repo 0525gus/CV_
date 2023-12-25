@@ -21,14 +21,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\C__\C__\test.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="..\C__\C__\teststs.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="dot45.png">
       <Filter>리소스 파일\right</Filter>
     </Image>
@@ -53,5 +45,10 @@
     <Image Include="ditor.jpg">
       <Filter>리소스 파일\distort</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\C__\C__\testGIt.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
