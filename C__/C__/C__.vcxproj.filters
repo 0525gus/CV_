@@ -24,10 +24,7 @@
     <ClCompile Include="checkcheck.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="teststs.cpp">
+    <ClCompile Include="mergeT.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
