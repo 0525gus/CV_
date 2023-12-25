@@ -10,7 +10,7 @@ void houghLinesCallback(int, void*);
 // 전역 변수
 int rho_slider = 10;  // 초기 rho 값
 int theta_slider = 235;  // 초기 theta 값
-int threshold_slider = 67;  // 초기 threshold 값
+int threshold_slider = 100;  // 초기 threshold 값
 
 Mat image; // 이미지 전역 변수
 Mat edges; // 엣지 전역 변수
