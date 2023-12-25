@@ -47,7 +47,7 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\C__\C__\teststs.cpp">
+    <ClCompile Include="..\C__\C__\BSBS.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

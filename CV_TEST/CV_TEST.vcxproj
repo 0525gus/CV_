@@ -149,7 +149,7 @@
     <Image Include="test90.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\C__\C__\teststs.cpp" />
+    <ClCompile Include="..\C__\C__\BSBS.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
