@@ -18,16 +18,16 @@
     <ClCompile Include="warpPerspective.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="base.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="checkcheck.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
+    <ClCompile Include="teststs.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="teststs.cpp">
+    <ClCompile Include="testGIt.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

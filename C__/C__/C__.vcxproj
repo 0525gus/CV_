@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="base.cpp" />
     <ClCompile Include="checkcheck.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="testGIt.cpp" />
     <ClCompile Include="teststs.cpp" />
     <ClCompile Include="warpPerspective.cpp" />
   </ItemGroup>
