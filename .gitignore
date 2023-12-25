@@ -402,5 +402,7 @@ FodyWeavers.xsd
 
 CV_TEST/imgtest/
 C__/.vs/
+*.jpg
+*.png
 
 ##
