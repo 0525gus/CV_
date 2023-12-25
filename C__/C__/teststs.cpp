@@ -16,7 +16,7 @@ Mat edges;
 
 
 int main() {
-    image = imread("final_3.PNG");
+    image = imread("dot45.png");
 
     Mat gray;
     cvtColor(image, gray, COLOR_BGR2GRAY);
@@ -64,7 +64,7 @@ void houghLinesCallback(int, void*) {
 
         // 대표 선을 그리기 위해 가장 긴 선을 찾습니다.
         float maxLength = 0;
-        Vec2f representativeLine;
+        Vec2f representativeLine; 
         for (const auto& line : cluster) {
             float length = line[0];
             if (length > maxLength) {
