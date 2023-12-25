@@ -8,19 +8,19 @@ using namespace cv;
 void houghLinesCallback(int, void*);
 
 // 전역 변수
-int rho_slider = 9;  // 초기 rho 값
+int rho_slider = 5;  // 초기 rho 값
 int theta_slider = 180;  // 초기 theta 값
-int threshold_slider = 108;  // 초기 threshold 값
+int threshold_slider = 150;  // 초기 threshold 값
 
 Mat image; // 이미지 전역 변수
 Mat edges; // 엣지 전역 변수
 
 int main() {
-    image = imread("test2.jpg");
-
+    image = imread("dot_base.png");
+    double resize_num = 0.5;
+    resize(image, image, {},resize_num, resize_num);
     Mat gray;
-    cvtColor(image, gray, COLOR_BGR2GRAY);
-
+    cvtColor(image, gray, COLOR_BGR2GRAY); 
     Canny(gray, edges, 50, 150);
 
     // 초기 허프 선 검출을 수행합니다.
@@ -55,10 +55,10 @@ void houghLinesCallback(int, void*) {
         Point pt1, pt2;
         double a = cos(theta), b = sin(theta);
         double x0 = a * rho, y0 = b * rho;
-        pt1.x = cvRound(x0 + 1000 * (-b));
-        pt1.y = cvRound(y0 + 1000 * (a));
-        pt2.x = cvRound(x0 - 1000 * (-b));
-        pt2.y = cvRound(y0 - 1000 * (a));
+        pt1.x = cvRound(x0 + 2000 * (-b));
+        pt1.y = cvRound(y0 + 2000 * (a));
+        pt2.x = cvRound(x0 - 2000 * (-b));
+        pt2.y = cvRound(y0 - 2000 * (a));
         line(result, pt1, pt2, Scalar(0, 0, 255), 2, LINE_AA);
     }
 
