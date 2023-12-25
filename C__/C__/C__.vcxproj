@@ -23,7 +23,6 @@
     <ClCompile Include="checkcheck.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="testGIt.cpp" />
-    <ClCompile Include="teststs.cpp" />
     <ClCompile Include="warpPerspective.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

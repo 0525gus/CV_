@@ -46,4 +46,9 @@
       <Filter>리소스 파일\distort</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\C__\C__\teststs.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>
