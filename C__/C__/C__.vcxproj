@@ -19,9 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\CV_TEST\ROItest.cpp" />
+    <ClCompile Include="..\..\CV_TEST\tests.cpp" />
     <ClCompile Include="base.cpp" />
     <ClCompile Include="base_cluster.cpp" />
     <ClCompile Include="base_cluster_line.cpp" />
+    <ClCompile Include="base_dot_SBD.cpp" />
+    <ClCompile Include="dot_detector_SBD.cpp" />
     <ClCompile Include="warpPerspective.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

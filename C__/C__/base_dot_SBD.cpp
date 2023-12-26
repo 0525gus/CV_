@@ -138,7 +138,7 @@ void on_mouse(int event, int x, int y, int flags, void* userdata) {
 
         //x,y좌표를 기준으로 ROI
         try {
-            Mat img_ROI(edges, Rect(start_x - 170, start_y - 170, 340, 340 ));
+            Mat img_ROI(edges, Rect(start_x - 170, start_y - 170, 320, 320));
 
 
             cv::SimpleBlobDetector::Params params;
@@ -151,22 +151,17 @@ void on_mouse(int event, int x, int y, int flags, void* userdata) {
             detector->detect(img_ROI, keypoints);
 
             cv::Mat img_with_keypoints;
-            cv::drawKeypoints(img_ROI, keypoints, img_with_keypoints,Scalar(0,255,0));
+            cv::drawKeypoints(img_ROI, keypoints, img_with_keypoints, Scalar(0, 255, 0));
             cout << "keypoints size = " << keypoints.size() << endl;
             for (size_t i = 0; i < keypoints.size(); i++) {
+                float x = keypoints[i].pt.x;
+                float y = keypoints[i].pt.y;
 
-                keypoints[i].pt.x += start_x - 170;
-                keypoints[i].pt.y += start_y - 170;
-                //float x = keypoints[i].pt.x;
-                //float y = keypoints[i].pt.y;
-
-               /* cout << "x = " << x << ", y = " << y << endl;*/
+                cout << "x = " << x << ", y = " << y << endl;
             }
+            cv::imshow("Keypoints", img_with_keypoints);
+            cv::waitKey(0);
 
-            // //SBD check part
-            //cv::imshow("Keypoints", img_with_keypoints);
-            //cv::waitKey(0);
-            
 
 
         }
@@ -192,12 +187,11 @@ void on_mouse(int event, int x, int y, int flags, void* userdata) {
         closestLines.push_back(distances[0].second);
         closestLines.push_back(distances[1].second);
 
-        
-        //for (const auto& cluster : closestLines) {
-        //    for (const auto& line : cluster) {
-        //        cout << "Line from (" << line.pt1.x << "," << line.pt1.y << ") to (" << line.pt2.x << "," << line.pt2.y << ")" << endl;
-        //    }
-        //}
+        for (const auto& cluster : closestLines) {
+            for (const auto& line : cluster) {
+                cout << "Line from (" << line.pt1.x << "," << line.pt1.y << ") to (" << line.pt2.x << "," << line.pt2.y << ")" << endl;
+            }
+        }
 
 
     }
