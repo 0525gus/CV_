@@ -56,6 +56,7 @@ void houghLinesCallback(int, void*) {
     linePoints.clear();
     clusters.clear();
 
+    // 검출된 라인 linePoints(x,y 두점의 셋) 저장
     for (size_t i = 0; i < lines.size(); ++i) {
         float rho = lines[i][0], theta = lines[i][1];
         Point pt1, pt2;
@@ -87,31 +88,70 @@ void houghLinesCallback(int, void*) {
         }
     }
 
-    //cluster line draw
-    for (const auto& cluster : clusters) {
-        Point pt1(0, 0), pt2(0, 0);
-        for (const auto& line : cluster) {
-            pt1 += line.pt1;
-            pt2 += line.pt2;
-        }
-        cout << "pt1 = " << pt1 << endl;
-        cout << "pt2 =" << pt2 << endl;
-        pt1.x /= cluster.size();
-        pt1.y /= cluster.size();
-        pt2.x /= cluster.size();
-        pt2.y /= cluster.size();
 
-        line(result, pt1, pt2, Scalar(0, 255, 0), 2, LINE_AA);
+    //cluster line draw
+    for (auto& cluster : clusters) {
+        // Find the line that overlaps with the most other lines in the cluster
+        int max_overlap = 0;
+        Line representative;
+        for (const auto& line1 : cluster) {
+            int overlap = 0;
+            for (const auto& line2 : cluster) {
+                if (abs(line1.pt1.x - line2.pt1.x) < 10 && abs(line1.pt1.y - line2.pt1.y) < 10 &&
+                    abs(line1.pt2.x - line2.pt2.x) < 10 && abs(line1.pt2.y - line2.pt2.y) < 10) {
+                    ++overlap;
+                }
+            }
+            if (overlap > max_overlap) {
+                max_overlap = overlap;
+                representative = line1;
+            }
+        }
+
+        // Keep only the representative line in this cluster
+        cluster = { representative };
+
+        // Draw the representative line
+        line(result, representative.pt1, representative.pt2, Scalar(0, 255, 0), 2, LINE_AA);
         cout << "Number of lines in this cluster: " << cluster.size() << endl;
     }
+
     cv::setMouseCallback("Hough Lines", on_mouse);
     imshow("Hough Lines", result);
 }
 
-void on_mouse(int event, int x, int y, int flags, void* userdata) {
+double distanceFromPointToLine(Point pt, Point lineStart, Point lineEnd) {
+    double numer = abs((lineEnd.y - lineStart.y) * pt.x - (lineEnd.x - lineStart.x) * pt.y + lineEnd.x * lineStart.y - lineEnd.y * lineStart.x);
+    double denom = sqrt(pow(lineEnd.y - lineStart.y, 2) + pow(lineEnd.x - lineStart.x, 2));
+    return numer / denom;
+}
 
+void on_mouse(int event, int x, int y, int flags, void* userdata) {
     if (event == EVENT_LBUTTONDOWN) {
         cout << x << "," << y << endl;
+
+        vector<pair<double, vector<Line>>> distances;
+        for (const auto& cluster : clusters) {
+            for (const auto& line : cluster) {
+                double dist = distanceFromPointToLine(Point(x, y), line.pt1, line.pt2);
+                distances.push_back(make_pair(dist, cluster));
+            }
+        }
+        sort(distances.begin(), distances.end(), [](const pair<double, vector<Line>>& a, const pair<double, vector<Line>>& b) {
+            return a.first < b.first;
+            });
+
+
+        vector<vector<Line>> closestLines;
+        closestLines.push_back(distances[0].second);
+        closestLines.push_back(distances[1].second);
+
+        for (const auto& cluster : closestLines) {
+            for (const auto& line : cluster) {
+                cout << "Line from (" << line.pt1.x << "," << line.pt1.y << ") to (" << line.pt2.x << "," << line.pt2.y << ")" << endl;
+            }
+        }
+
+
     }
-    //구현하는 부분
 }
