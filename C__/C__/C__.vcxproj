@@ -20,9 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="base.cpp" />
-    <ClCompile Include="checkcheck.cpp" />
-    <ClCompile Include="test.cpp" />
-    <ClCompile Include="testGIt.cpp" />
+    <ClCompile Include="base_cluster.cpp" />
+    <ClCompile Include="base_cluster_line.cpp" />
     <ClCompile Include="warpPerspective.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
