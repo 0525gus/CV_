@@ -2,6 +2,9 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
+#include <chrono>
+#include <format>
+
 using namespace cv;
 using namespace std;
 
@@ -130,22 +133,24 @@ double distanceFromPointToLine(Point pt, Point lineStart, Point lineEnd) {
 float eq(float m ,int x, int y) {
     return m * x + y;
 }
+
 void on_mouse(int event, int x, int y, int flags, void* userdata) {
     if (event == EVENT_LBUTTONDOWN) {
         start_x = x;
         start_y = y;
         cout << x << "," << y << endl;
 
-
+        std::chrono::steady_clock::time_point start, end;
 
         //x,y좌표를 기준으로 ROI
+        start = std::chrono::steady_clock::now();
         try {
             Mat img_ROI(edges, Rect(start_x - 170, start_y - 170, 340, 340 ));
 
 
             cv::SimpleBlobDetector::Params params;
             params.filterByArea = true;
-            params.minArea = 20; // 픽셀 수에 따라 조절
+            params.minArea = 30; // 픽셀 수에 따라 조절
 
             cv::Ptr<cv::SimpleBlobDetector> detector = cv::SimpleBlobDetector::create(params);
 
@@ -165,8 +170,11 @@ void on_mouse(int event, int x, int y, int flags, void* userdata) {
                /* cout << "x = " << x << ", y = " << y << endl;*/
             }
 
-            // //SBD check part
+             //SBD check part
             cv::imshow("Keypoints", img_with_keypoints);
+            end = std::chrono::steady_clock::now();
+            auto duration = std::chrono::duration_cast<std::chrono::duration<double>>(end - start).count();
+            std::cout << std::format("{:.6f}s\n", duration);
             cv::waitKey(0);
             
 
@@ -175,8 +183,12 @@ void on_mouse(int event, int x, int y, int flags, void* userdata) {
         catch (...) {
             cerr << "ROI range error but pass" << endl;
         }
+
+
         //waitKey(0);
         //
+
+
 
         vector<pair<double, vector<Line>>> distances;
         for (const auto& cluster : clusters) {
