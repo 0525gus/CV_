@@ -15,6 +15,8 @@ void on_mouse(int event, int x, int y, int flags, void* userdata);
 int rho_slider = 2;
 int theta_slider = 180;
 int threshold_slider = 108;
+int start_x = -1;
+int start_y = -1;
 
 Mat img;
 Mat edges;
@@ -23,7 +25,7 @@ vector<Line> linePoints;
 vector<vector<Line>> clusters;
 
 int main() {
-    img = imread("a.png");
+    img = imread("te.png");
     double rsizeNum = 1;
     resize(img, img, {}, rsizeNum, rsizeNum);
 
@@ -128,7 +130,31 @@ double distanceFromPointToLine(Point pt, Point lineStart, Point lineEnd) {
 
 void on_mouse(int event, int x, int y, int flags, void* userdata) {
     if (event == EVENT_LBUTTONDOWN) {
+        start_x = x;
+        start_y = y;
         cout << x << "," << y << endl;
+
+
+
+        //x,y좌표를 기준으로 ROI
+        try {
+            Mat img_ROI(edges, Rect(start_x - 100, start_y - 100, 200, 200 ));
+            std::vector<cv::Vec3f> circles;
+            cv::HoughCircles(img_ROI, circles, cv::HOUGH_GRADIENT, 1, 10, 50, 30, 5, 50);
+
+            // 검출된 원 그리기
+            for (size_t i = 0; i < circles.size(); ++i) {
+                cv::Point center(cvRound(circles[i][0]), cvRound(circles[i][1]));
+                int radius = cvRound(circles[i][2]);
+                cv::circle(img_ROI, center, radius, cv::Scalar(0, 255, 0), 3, 8, 0);
+            }
+
+            imshow("test", test);
+        }
+        catch (...) {
+            cerr << "ROI range error but pass" << endl;
+        }
+        waitKey(0);
 
         vector<pair<double, vector<Line>>> distances;
         for (const auto& cluster : clusters) {
