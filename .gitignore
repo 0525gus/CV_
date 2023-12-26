@@ -400,6 +400,9 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 
-CV_/CV_TEST/imgtest/
+CV_TEST/imgtest/
+C__/.vs/
+*.jpg
+*.png
 
 ##

@@ -10,14 +10,14 @@ void houghLinesCallback(int, void*);
 // 전역 변수
 int rho_slider = 10;  // 초기 rho 값
 int theta_slider = 235;  // 초기 theta 값
-int threshold_slider = 67;  // 초기 threshold 값
+int threshold_slider = 100;  // 초기 threshold 값
 
 Mat image; // 이미지 전역 변수
 Mat edges; // 엣지 전역 변수
 
 int main() {
     // 이미지를 로드합니다.
-    image = imread("ZZ.PNG");
+    image = imread("dot45.png");
 
     // 그레이스케일로 변환합니다.
     Mat gray;

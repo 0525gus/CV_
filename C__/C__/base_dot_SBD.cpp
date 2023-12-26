@@ -115,7 +115,7 @@ void houghLinesCallback(int, void*) {
 
         // Draw the representative line
         line(result, representative.pt1, representative.pt2, Scalar(0, 255, 0), 2, LINE_AA);
-        //cout << "Number of lines in this cluster: " << cluster.size() << endl;
+        cout << "Number of lines in this cluster: " << cluster.size() << endl;
     }
 
     cv::setMouseCallback("Hough Lines", on_mouse);
@@ -127,9 +127,7 @@ double distanceFromPointToLine(Point pt, Point lineStart, Point lineEnd) {
     double denom = sqrt(pow(lineEnd.y - lineStart.y, 2) + pow(lineEnd.x - lineStart.x, 2));
     return numer / denom;
 }
-float eq(float m ,int x, int y) {
-    return m * x + y;
-}
+
 void on_mouse(int event, int x, int y, int flags, void* userdata) {
     if (event == EVENT_LBUTTONDOWN) {
         start_x = x;
@@ -140,7 +138,7 @@ void on_mouse(int event, int x, int y, int flags, void* userdata) {
 
         //x,y좌표를 기준으로 ROI
         try {
-            Mat img_ROI(edges, Rect(start_x - 170, start_y - 170, 340, 340 ));
+            Mat img_ROI(edges, Rect(start_x - 170, start_y - 170, 320, 320));
 
 
             cv::SimpleBlobDetector::Params params;
@@ -153,30 +151,24 @@ void on_mouse(int event, int x, int y, int flags, void* userdata) {
             detector->detect(img_ROI, keypoints);
 
             cv::Mat img_with_keypoints;
-            cv::drawKeypoints(img_ROI, keypoints, img_with_keypoints,Scalar(0,255,0));
+            cv::drawKeypoints(img_ROI, keypoints, img_with_keypoints, Scalar(0, 255, 0));
             cout << "keypoints size = " << keypoints.size() << endl;
             for (size_t i = 0; i < keypoints.size(); i++) {
+                float x = keypoints[i].pt.x;
+                float y = keypoints[i].pt.y;
 
-                keypoints[i].pt.x += start_x - 170;
-                keypoints[i].pt.y += start_y - 170;
-                //float x = keypoints[i].pt.x;
-                //float y = keypoints[i].pt.y;
-
-               /* cout << "x = " << x << ", y = " << y << endl;*/
+                cout << "x = " << x << ", y = " << y << endl;
             }
-
-            // //SBD check part
             cv::imshow("Keypoints", img_with_keypoints);
             cv::waitKey(0);
-            
+
 
 
         }
         catch (...) {
             cerr << "ROI range error but pass" << endl;
         }
-        //waitKey(0);
-        //
+        waitKey(0);
 
         vector<pair<double, vector<Line>>> distances;
         for (const auto& cluster : clusters) {
@@ -195,29 +187,11 @@ void on_mouse(int event, int x, int y, int flags, void* userdata) {
         closestLines.push_back(distances[0].second);
         closestLines.push_back(distances[1].second);
 
-        
         for (const auto& cluster : closestLines) {
             for (const auto& line : cluster) {
                 cout << "Line from (" << line.pt1.x << "," << line.pt1.y << ") to (" << line.pt2.x << "," << line.pt2.y << ")" << endl;
             }
         }
-        //equation
-        //cout << "X1=" << closestLines[0][0].pt1.x << " Y1=" << closestLines[0][0].pt1.y << " X2=" << closestLines[0][0].pt2.x << " Y2=" << closestLines[0][0].pt2.y << endl;
-        //cout << "X1=" << closestLines[1][0].pt1.x << " Y1=" << closestLines[1][0].pt1.y << " X2=" << closestLines[1][0].pt2.x << " Y2=" << closestLines[1][0].pt2.y << endl;
-
-        float X1 = closestLines[0][0].pt1.x;
-        float Y1 = closestLines[0][0].pt1.y;
-        float X2 = closestLines[0][0].pt2.x;
-        float Y2 = closestLines[0][0].pt2.y;
-
-        float m = (Y2 - Y1) / (Y2 - Y1);
-        
-        float eq_num = (m, x, y);
-        cout << eq_num << endl;
-
-        
-
-        
 
 
     }

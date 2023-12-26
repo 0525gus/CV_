@@ -19,9 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\CV_TEST\ROItest.cpp" />
+    <ClCompile Include="..\..\CV_TEST\tests.cpp" />
     <ClCompile Include="base.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="checkcheck.cpp" />
     <ClCompile Include="mergeT.cpp" />
+=======
+    <ClCompile Include="base_cluster.cpp" />
+    <ClCompile Include="base_cluster_line.cpp" />
+    <ClCompile Include="base_dot_SBD.cpp" />
+    <ClCompile Include="dot_detector_SBD.cpp" />
+>>>>>>> bd4e87925a2a7883fbf19034038d751f909122f0
     <ClCompile Include="warpPerspective.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
