@@ -24,6 +24,9 @@
     <ClCompile Include="base_cluster.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="mergeT.cpp">
+=======
     <ClCompile Include="base_cluster_line.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -37,6 +40,7 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="base_dot_SBD.cpp">
+>>>>>>> bd4e87925a2a7883fbf19034038d751f909122f0
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
